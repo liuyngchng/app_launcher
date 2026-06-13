@@ -51,13 +51,6 @@ class LauncherAccessibilityService : AccessibilityService() {
         )
         wakeLock.acquire(10000L)
 
-        // Log alarm trigger
-        CoroutineScope(Dispatchers.IO).launch {
-            (application as AppLauncherApp).logRepository.addLog(
-                ExecutionLog(packageName, "[闹钟触发] $appName", System.currentTimeMillis())
-            )
-        }
-
         // Directly start BridgeActivity — AccessibilityService is not subject to
         // background activity launch restrictions
         val bridgeIntent = Intent(this, BridgeActivity::class.java).apply {

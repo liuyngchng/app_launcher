@@ -24,15 +24,6 @@ class BridgeActivity : Activity() {
         val packageName = intent.getStringExtra(EXTRA_PACKAGE)
         val appName = intent.getStringExtra(EXTRA_APP_NAME) ?: packageName ?: "未知"
 
-        // Log alarm fired immediately so user sees exact trigger time
-        if (packageName != null) {
-            CoroutineScope(Dispatchers.IO).launch {
-                (application as AppLauncherApp).logRepository.addLog(
-                    ExecutionLog(packageName, "[闹钟触发] $appName", System.currentTimeMillis())
-                )
-            }
-        }
-
         // Wake up and show over lock screen
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
             setShowWhenLocked(true)
@@ -96,11 +87,6 @@ class BridgeActivity : Activity() {
             launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             try {
                 startActivity(launchIntent)
-                CoroutineScope(Dispatchers.IO).launch {
-                    (application as AppLauncherApp).logRepository.addLog(
-                        ExecutionLog(packageName, appName, System.currentTimeMillis())
-                    )
-                }
             } catch (e: Exception) {
                 Log.e("BridgeActivity", "startActivity failed for $packageName", e)
                 CoroutineScope(Dispatchers.IO).launch {

@@ -138,7 +138,7 @@ fun HomeScreen(
                         containerColor = if (problemCount > 0)
                             MaterialTheme.colorScheme.errorContainer
                         else
-                            MaterialTheme.colorScheme.primaryContainer
+                            CardDefaults.cardColors().containerColor
                     )
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
