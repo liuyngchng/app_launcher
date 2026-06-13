@@ -115,7 +115,9 @@ fun HomeScreen(
                     diagnostics.hasLockScreen,
                     !diagnostics.targetAppInstalled,
                     diagnostics.scheduleEnabled && !diagnostics.alarmsRegistered,
-                    diagnostics.missedSchedules.isNotEmpty()
+                    diagnostics.missedSchedules.isNotEmpty(),
+                    !diagnostics.accessibilityEnabled,
+                    !diagnostics.overlayGranted
                 ).count { it }
                 Card(
                     modifier = Modifier.fillMaxWidth(),
@@ -190,6 +192,44 @@ fun HomeScreen(
                                     okText = "",
                                     failText = "错过执行：$missed"
                                 )
+                            }
+                            DiagnosticRow(
+                                ok = diagnostics.accessibilityEnabled,
+                                okText = "无障碍服务：已开启（最高优先级）",
+                                failText = "无障碍服务：未开启 → 强烈建议开启"
+                            )
+                            if (!diagnostics.accessibilityEnabled) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth().padding(start = 24.dp, bottom = 4.dp),
+                                    horizontalArrangement = Arrangement.Start
+                                ) {
+                                    TextButton(onClick = {
+                                        context.startActivity(Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS))
+                                    }) {
+                                        Text("去开启无障碍", style = MaterialTheme.typography.bodySmall)
+                                    }
+                                }
+                            }
+                            DiagnosticRow(
+                                ok = diagnostics.overlayGranted,
+                                okText = "悬浮窗权限：已授予",
+                                failText = "悬浮窗权限：未授予 → 建议开启"
+                            )
+                            if (!diagnostics.overlayGranted) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth().padding(start = 24.dp, bottom = 4.dp),
+                                    horizontalArrangement = Arrangement.Start
+                                ) {
+                                    TextButton(onClick = {
+                                        val intent = Intent(
+                                            android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                            android.net.Uri.parse("package:${context.packageName}")
+                                        )
+                                        context.startActivity(intent)
+                                    }) {
+                                        Text("去开启悬浮窗", style = MaterialTheme.typography.bodySmall)
+                                    }
+                                }
                             }
                         }
                     }

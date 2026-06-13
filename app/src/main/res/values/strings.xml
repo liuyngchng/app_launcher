@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">定时启动器</string>
+    <string name="accessibility_service_description">定时启动器使用无障碍服务确保在后台也能准时启动目标应用。不会读取或收集任何屏幕内容。</string>
 </resources>

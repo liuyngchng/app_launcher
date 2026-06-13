@@ -164,6 +164,24 @@ class MainActivity : ComponentActivity() {
         val targetInstalled = packageManager.getLaunchIntentForPackage(schedule.packageName) != null
         val alarmsOk = schedule.enabled && AlarmReceiver.hasAlarms(this, schedule)
 
+        // Check if our AccessibilityService is enabled
+        val accessibilityEnabled = try {
+            val enabledServices = Settings.Secure.getString(
+                contentResolver,
+                Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
+            )
+            enabledServices?.contains(packageName) == true
+        } catch (_: Exception) {
+            false
+        }
+
+        // Check if overlay permission is granted
+        val overlayGranted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Settings.canDrawOverlays(this)
+        } else {
+            true
+        }
+
         // Detect missed schedules
         val missedSchedules = mutableListOf<String>()
         val now = Calendar.getInstance()
@@ -219,7 +237,9 @@ class MainActivity : ComponentActivity() {
             alarmsRegistered = alarmsOk,
             missedSchedules = missedSchedules,
             scheduleEnabled = schedule.enabled,
-            hasSchedule = true
+            hasSchedule = true,
+            accessibilityEnabled = accessibilityEnabled,
+            overlayGranted = overlayGranted
         )
     }
 }

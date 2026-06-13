@@ -9,7 +9,9 @@ data class Diagnostics(
     val alarmsRegistered: Boolean,
     val missedSchedules: List<String>,
     val scheduleEnabled: Boolean,
-    val hasSchedule: Boolean
+    val hasSchedule: Boolean,
+    val accessibilityEnabled: Boolean,
+    val overlayGranted: Boolean
 ) {
     val allOk: Boolean
         get() = exactAlarmGranted && batteryWhitelisted && !hasLockScreen
