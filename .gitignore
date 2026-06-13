@@ -1,0 +1,71 @@
+# Built application files
+*.apk
+*.aab
+*.ap_
+*.aab_
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+
+# Gradle files
+.gradle/
+build/
+*/build/
+
+# Local configuration
+local.properties
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.nbattrs
+
+# Android Studio
+*.log
+captures/
+.externalNativeBuild/
+.cxx/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Proguard
+proguard/
+
+# Kotlin
+.kotlin/
+
+# Android Profiling
+*.hprof
+
+# Testing
+*.junit
+*.testresult
+
+# Navigation temp files
+*.nav
+
+# Secrets / signing
+*.keystore
+*.jks
+*.p12
+*.key
+*.pem
+*.pkcs12
+secrets.properties
