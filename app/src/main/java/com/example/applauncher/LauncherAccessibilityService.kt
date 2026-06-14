@@ -6,10 +6,8 @@ import android.os.PowerManager
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
 import com.example.applauncher.model.ExecutionLog
-import com.example.applauncher.receiver.AlarmReceiver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class LauncherAccessibilityService : AccessibilityService() {
@@ -66,15 +64,6 @@ class LauncherAccessibilityService : AccessibilityService() {
                 (application as AppLauncherApp).logRepository.addLog(
                     ExecutionLog(packageName, "[启动失败] $appName", System.currentTimeMillis())
                 )
-            }
-        }
-
-        // Re-schedule for next week
-        CoroutineScope(Dispatchers.IO).launch {
-            val app = application as AppLauncherApp
-            val sched = app.scheduleRepository.schedule.first()
-            if (sched != null && sched.enabled) {
-                AlarmReceiver.schedule(this@LauncherAccessibilityService, sched)
             }
         }
 

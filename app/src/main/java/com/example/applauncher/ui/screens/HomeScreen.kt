@@ -122,7 +122,6 @@ fun HomeScreen(
                     diagnostics.hasLockScreen,
                     !diagnostics.targetAppInstalled,
                     diagnostics.scheduleEnabled && !diagnostics.alarmsRegistered,
-                    diagnostics.missedSchedules.isNotEmpty(),
                     !diagnostics.accessibilityEnabled,
                     !diagnostics.overlayGranted
                 ).count { it }
@@ -196,13 +195,6 @@ fun HomeScreen(
                                     ok = false,
                                     okText = "",
                                     failText = "尚未设置定时任务 → 请选择应用和时间后保存"
-                                )
-                            }
-                            diagnostics.missedSchedules.forEach { missed ->
-                                DiagnosticRow(
-                                    ok = false,
-                                    okText = "",
-                                    failText = "错过执行：$missed"
                                 )
                             }
                             DiagnosticRow(

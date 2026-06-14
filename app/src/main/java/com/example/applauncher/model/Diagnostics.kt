@@ -7,7 +7,6 @@ data class Diagnostics(
     val targetAppInstalled: Boolean,
     val targetAppName: String,
     val alarmsRegistered: Boolean,
-    val missedSchedules: List<String>,
     val scheduleEnabled: Boolean,
     val hasSchedule: Boolean,
     val accessibilityEnabled: Boolean,
@@ -15,6 +14,6 @@ data class Diagnostics(
 ) {
     val allOk: Boolean
         get() = exactAlarmGranted && batteryWhitelisted && !hasLockScreen
-                && targetAppInstalled && alarmsRegistered && missedSchedules.isEmpty()
+                && targetAppInstalled && alarmsRegistered
                 && scheduleEnabled
 }
