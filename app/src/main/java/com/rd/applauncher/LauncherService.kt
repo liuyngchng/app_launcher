@@ -1,12 +1,12 @@
-package com.example.applauncher
+package com.rd.applauncher
 
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import android.os.PowerManager
 import android.util.Log
-import com.example.applauncher.model.ExecutionLog
-import com.example.applauncher.receiver.AlarmReceiver
+import com.rd.applauncher.model.ExecutionLog
+import com.rd.applauncher.receiver.AlarmReceiver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

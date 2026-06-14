@@ -1,14 +1,29 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
+val localProperties = Properties().apply {
+    rootProject.file("local.properties").takeIf { it.exists() }?.inputStream()?.use { load(it) }
+}
+
 android {
-    namespace = "com.example.applauncher"
+    namespace = "com.rd.applauncher"
     compileSdk = 34
 
+    signingConfigs {
+        create("release") {
+            storeFile = file(System.getProperty("user.home") + "/app_launcher.jks")
+            storePassword = localProperties.getProperty("keystore.password") ?: ""
+            keyAlias = "applauncher"
+            keyPassword = localProperties.getProperty("key.password") ?: ""
+        }
+    }
+
     defaultConfig {
-        applicationId = "com.example.applauncher"
+        applicationId = "com.rd.applauncher"
         minSdk = 31
         targetSdk = 34
         versionCode = 1
@@ -21,7 +36,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

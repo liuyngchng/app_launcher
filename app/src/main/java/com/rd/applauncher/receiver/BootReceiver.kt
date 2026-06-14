@@ -1,9 +1,9 @@
-package com.example.applauncher.receiver
+package com.rd.applauncher.receiver
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.example.applauncher.AppLauncherApp
+import com.rd.applauncher.AppLauncherApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first

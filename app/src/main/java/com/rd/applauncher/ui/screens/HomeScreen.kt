@@ -1,4 +1,4 @@
-package com.example.applauncher.ui.screens
+package com.rd.applauncher.ui.screens
 
 import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -48,13 +48,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.applauncher.AppLauncherApp
-import com.example.applauncher.BridgeActivity
-import com.example.applauncher.model.AppInfo
-import com.example.applauncher.model.Diagnostics
-import com.example.applauncher.model.ExecutionLog
-import com.example.applauncher.model.Schedule
-import com.example.applauncher.model.TimeSlot
+import com.rd.applauncher.AppLauncherApp
+import com.rd.applauncher.BridgeActivity
+import com.rd.applauncher.model.AppInfo
+import com.rd.applauncher.model.Diagnostics
+import com.rd.applauncher.model.ExecutionLog
+import com.rd.applauncher.model.Schedule
+import com.rd.applauncher.model.TimeSlot
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

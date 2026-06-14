@@ -1,4 +1,4 @@
-package com.example.applauncher.ui.theme
+package com.rd.applauncher.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

@@ -1,11 +1,11 @@
-package com.example.applauncher
+package com.rd.applauncher
 
 import android.accessibilityservice.AccessibilityService
 import android.content.Intent
 import android.os.PowerManager
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
-import com.example.applauncher.model.ExecutionLog
+import com.rd.applauncher.model.ExecutionLog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

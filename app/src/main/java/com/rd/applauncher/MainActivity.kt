@@ -1,4 +1,4 @@
-package com.example.applauncher
+package com.rd.applauncher
 
 import android.app.AlarmManager
 import android.app.KeyguardManager
@@ -21,10 +21,10 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.example.applauncher.model.Diagnostics
-import com.example.applauncher.receiver.AlarmReceiver
-import com.example.applauncher.ui.screens.HomeScreen
-import com.example.applauncher.ui.theme.AppLauncherTheme
+import com.rd.applauncher.model.Diagnostics
+import com.rd.applauncher.receiver.AlarmReceiver
+import com.rd.applauncher.ui.screens.HomeScreen
+import com.rd.applauncher.ui.theme.AppLauncherTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -113,7 +113,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun scheduleAlarms(schedule: com.example.applauncher.model.Schedule) {
+    private fun scheduleAlarms(schedule: com.rd.applauncher.model.Schedule) {
         if (!hasExactAlarmPermission()) {
             requestExactAlarmPermission()
             return
@@ -150,7 +150,7 @@ class MainActivity : ComponentActivity() {
         requestBatteryOptimizationLauncher.launch(intent)
     }
 
-    private fun runDiagnostics(schedule: com.example.applauncher.model.Schedule): Diagnostics {
+    private fun runDiagnostics(schedule: com.rd.applauncher.model.Schedule): Diagnostics {
         val app = application as AppLauncherApp
         val km = getSystemService(KEYGUARD_SERVICE) as KeyguardManager
         val hasLockScreen = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

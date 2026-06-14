@@ -1,4 +1,4 @@
-package com.example.applauncher.data
+package com.rd.applauncher.data
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -6,8 +6,8 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.applauncher.model.Schedule
-import com.example.applauncher.model.TimeSlot
+import com.rd.applauncher.model.Schedule
+import com.rd.applauncher.model.TimeSlot
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

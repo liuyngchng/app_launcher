@@ -1,4 +1,4 @@
-package com.example.applauncher
+package com.rd.applauncher
 
 import android.app.Activity
 import android.app.KeyguardManager
@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.os.PowerManager
 import android.util.Log
 import android.view.WindowManager
-import com.example.applauncher.model.ExecutionLog
+import com.rd.applauncher.model.ExecutionLog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,13 +1,13 @@
-package com.example.applauncher.receiver
+package com.rd.applauncher.receiver
 
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.example.applauncher.LauncherService
-import com.example.applauncher.model.Schedule
-import com.example.applauncher.model.TimeSlot
+import com.rd.applauncher.LauncherService
+import com.rd.applauncher.model.Schedule
+import com.rd.applauncher.model.TimeSlot
 import java.util.Calendar
 
 class AlarmReceiver : BroadcastReceiver() {

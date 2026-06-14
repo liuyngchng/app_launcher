@@ -1,8 +1,8 @@
-package com.example.applauncher
+package com.rd.applauncher
 
 import android.app.Application
-import com.example.applauncher.data.LogRepository
-import com.example.applauncher.data.ScheduleRepository
+import com.rd.applauncher.data.LogRepository
+import com.rd.applauncher.data.ScheduleRepository
 
 class AppLauncherApp : Application() {
 

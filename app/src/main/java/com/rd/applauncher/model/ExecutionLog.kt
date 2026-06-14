@@ -1,4 +1,4 @@
-package com.example.applauncher.model
+package com.rd.applauncher.model
 
 data class ExecutionLog(
     val packageName: String,

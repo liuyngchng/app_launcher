@@ -31,16 +31,42 @@
 
 ## 构建
 
+### debug
+
 ```bash
-# 使用 Gradle Wrapper 构建 Debug APK
+# 构建 debug APK
+# 使用 Gradle Wrapper 构建 Debug APK， APK 输出在 app/build/outputs/apk/debug/ 下
 ./gradlew assembleDebug
-
-# 构建 Release APK
-./gradlew assembleRelease
-
 # 安装到设备
 ./gradlew installDebug
+
+
 ```
+
+### release
+
+```sh
+# 构建 Release APK
+# 1. 生成密钥库 会提示你填密码和基本信息，记住密码和 alias，在local.properties 文件中配置你的密码， 以及安卓SDK路径
+keytool -genkey -v -keystore ~/app_launcher.jks \
+    -keyalg RSA -keysize 2048 -validity 10000 \
+    -alias applauncher
+
+# 开始构建， APK 输出在 app/build/outputs/apk/release/ 下
+./gradlew assembleRelease
+
+# ADB 安装（手机开 USB 调试，连电脑）
+# 确认自己的设备已经USB调试模式连接到了点那
+adb devices
+adb install app/build/outputs/apk/release/app-release.apk
+
+# 直接传到手机点击安装 或者用 adb 推送到手机
+adb push app/build/outputs/apk/release/app-release.apk /sdcard/Download/
+# 然后在手机上用文件管理器找到 APK 点击安装。
+# 或者用微信/QQ 传文件、AirDroid、蓝牙等方式把 APK 传到手机上再装
+```
+
+
 
 ## 使用
 

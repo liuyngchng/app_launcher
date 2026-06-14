@@ -1,7 +1,7 @@
-package com.example.applauncher.data
+package com.rd.applauncher.data
 
 import android.content.Context
-import com.example.applauncher.model.ExecutionLog
+import com.rd.applauncher.model.ExecutionLog
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.MutableStateFlow
